@@ -4,7 +4,9 @@
         "Preset used by Webhippie"
     ],
     "extends": [
-        "config:base",
+        "config:best-practices",
+        ":disableRateLimiting",
+        ":prImmediately",
         ":semanticCommits",
         ":semanticCommitType(deps)"
     ],
@@ -17,35 +19,43 @@
             "gomodTidy"
         ]
     },
+    "regexManagers": [
+        {
+            "fileMatch": [
+                "(^|/|\\.)([Dd]ocker|[Cc]ontainer)file$",
+                "(^|/)([Dd]ocker|[Cc]ontainer)file[^/]*$"
+            ],
+            "matchStrings": [
+                "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>.*?))?\nENV .*?_VERSION=(?<currentValue>.*)"
+            ]
+        }
+    ],
     "packageRules": [
         {
             "description": "Semantic commits for major updates",
-            "groupName": "major versions",
             "matchUpdateTypes": [
                 "major"
             ],
-            "semanticCommitType": "major",
-            "semanticCommitScope": "deps",
+            "semanticCommitType": "deps",
+            "semanticCommitScope": "major",
             "automerge": true
         },
         {
             "description": "Semantic commits for minor updates",
-            "groupName": "minor versions",
             "matchUpdateTypes": [
                 "minor"
             ],
-            "semanticCommitType": "minor",
-            "semanticCommitScope": "deps",
+            "semanticCommitType": "deps",
+            "semanticCommitScope": "minor",
             "automerge": true
         },
         {
             "description": "Semantic commits for patch updates",
-            "groupName": "patch versions",
             "matchUpdateTypes": [
                 "patch"
             ],
-            "semanticCommitType": "patch",
-            "semanticCommitScope": "deps",
+            "semanticCommitType": "deps",
+            "semanticCommitScope": "patch",
             "automerge": true
         },
         {
@@ -59,9 +69,19 @@
                 "pinDigest",
                 "digest"
             ],
-            "semanticCommitType": "chore",
+            "semanticCommitType": "patch",
             "semanticCommitScope": "deps",
             "pinDigests": true,
+            "automerge": true
+        },
+        {
+            "description": "Build tool version upgrades",
+            "groupName": "build tools",
+            "matchManagers": [
+                "github-actions"
+            ],
+            "semanticCommitType": "ci",
+            "semanticCommitScope": "tools",
             "automerge": true
         },
         {
@@ -76,14 +96,21 @@
             "automerge": true
         },
         {
-            "description": "Build tool version upgrades",
-            "groupName": "build tools",
             "matchManagers": [
-                "github-actions"
+                "gomod"
             ],
-            "semanticCommitType": "ci",
-            "semanticCommitScope": "tools",
-            "automerge": true
+            "ignoreDeps": [
+                "github.com/golangci/golangci-lint/v2/cmd/golangci-lint",
+                "github.com/mgechev/revive",
+                "github.com/golang/mock/mockgen",
+                "github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen"
+            ]
+        },
+        {
+            "matchPackageNames": [
+                "/^github.com\/uptrace\/bun"
+            ],
+            "groupName": "github.com-uptrace-bun deps"
         }
     ],
     "labels": [
