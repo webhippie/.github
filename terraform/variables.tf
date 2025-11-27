@@ -16,21 +16,12 @@ variable "members" {
       name = "felixboehm"
       role = "admin"
     },
-
-    {
-      name = "Cyb3rDudu"
-      role = "member"
-    },
     {
       name = "frankaellen"
       role = "member"
     },
     {
       name = "michaelstingl"
-      role = "member"
-    },
-    {
-      name = "psi-4ward"
       role = "member"
     },
   ]
@@ -81,21 +72,12 @@ variable "teams" {
           name = "felixboehm"
           role = "maintainer"
         },
-
-        {
-          name = "Cyb3rDudu"
-          role = "member"
-        },
         {
           name = "frankaellen"
           role = "member"
         },
         {
           name = "michaelstingl"
-          role = "member"
-        },
-        {
-          name = "psi-4ward"
           role = "member"
         },
       ]
