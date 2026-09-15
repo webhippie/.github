@@ -85,7 +85,7 @@
       ],
       "minimumReleaseAge": "14 days",
       "internalChecksFilter": "strict",
-      "prCreation": "not-pending"
+      "recreateWhen": "always"
     },
     {
       "description": "Automerge docker digest updates",
