@@ -80,8 +80,8 @@
       "matchManagers": [
         "mise"
       ],
-      "matchPackageNames": [
-        "/^ruby$"
+      "matchDatasources": [
+        "ruby-version"
       ],
       "minimumReleaseAge": "14 days",
       "internalChecksFilter": "strict",
