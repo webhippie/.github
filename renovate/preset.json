@@ -83,7 +83,8 @@
       "matchPackageNames": [
         "/^ruby$"
       ],
-      "minimumReleaseAge": "14 days"
+      "minimumReleaseAge": "14 days",
+      "internalChecksFilter": "strict"
     },
     {
       "description": "Automerge docker digest updates",
