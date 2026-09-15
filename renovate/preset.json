@@ -84,7 +84,8 @@
         "/^ruby$"
       ],
       "minimumReleaseAge": "14 days",
-      "internalChecksFilter": "strict"
+      "internalChecksFilter": "strict",
+      "prCreation": "not-pending"
     },
     {
       "description": "Automerge docker digest updates",
