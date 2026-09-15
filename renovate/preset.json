@@ -77,6 +77,15 @@
       "automerge": true
     },
     {
+      "matchManagers": [
+        "mise"
+      ],
+      "matchPackageNames": [
+        "/^ruby$"
+      ],
+      "minimumReleaseAge": "14 days"
+    },
+    {
       "description": "Automerge docker digest updates",
       "groupName": "docker digests",
       "matchDatasources": [
